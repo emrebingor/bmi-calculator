@@ -1,5 +1,8 @@
+import 'package:bmi_calculator_flutter_app/constants.dart';
+import 'package:bmi_calculator_flutter_app/icon_design.dart';
+import 'package:bmi_calculator_flutter_app/reusable_card.dart';
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -22,8 +25,20 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: <Widget>[
-                ReusableCard(),
-                ReusableCard(),
+                ReusableCard(
+                  cardChild: IconDesign(
+                    icon: FontAwesomeIcons.mars,
+                    gender: 'MALE',
+                  ),
+                  color: kContainerColor,
+                ),
+                ReusableCard(
+                  cardChild: IconDesign(
+                    icon: FontAwesomeIcons.venus,
+                    gender: 'FEMALE',
+                  ),
+                  color: kContainerColor,
+                ),
               ],
             ),
           ),
@@ -32,6 +47,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: Row(
+
               children: <Widget>[
                 Container(),
                 Container(),
@@ -40,25 +56,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  const ReusableCard({this.cardChild, this.color});
-
-  final Widget? cardChild;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: cardChild,
     );
   }
 }
