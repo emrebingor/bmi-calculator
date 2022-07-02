@@ -2,6 +2,7 @@ import 'package:bmi_calculator_flutter_app/calculator_button.dart';
 import 'package:bmi_calculator_flutter_app/constants.dart';
 import 'package:bmi_calculator_flutter_app/icon_design.dart';
 import 'package:bmi_calculator_flutter_app/material_button.dart';
+import 'package:bmi_calculator_flutter_app/results_page.dart';
 import 'package:bmi_calculator_flutter_app/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -184,6 +185,14 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           CalculateButton(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
             buttonName: 'CALCULATE',
           ),
         ],
