@@ -25,39 +25,74 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: <Widget>[
-                ReusableCard(
-                  cardChild: IconDesign(
-                    icon: FontAwesomeIcons.mars,
-                    gender: 'MALE',
+                Expanded(
+                  child: ReusableCard(
+                    cardChild: IconDesign(
+                      icon: FontAwesomeIcons.mars,
+                      gender: 'MALE',
+                    ),
+                    color: kContainerColor,
                   ),
-                  color: kContainerColor,
                 ),
-                ReusableCard(
-                  cardChild: IconDesign(
-                    icon: FontAwesomeIcons.venus,
-                    gender: 'FEMALE',
+                Expanded(
+                  child: ReusableCard(
+                    cardChild: IconDesign(
+                      icon: FontAwesomeIcons.venus,
+                      gender: 'FEMALE',
+                    ),
+                    color: kContainerColor,
                   ),
-                  color: kContainerColor,
                 ),
               ],
             ),
           ),
           Expanded(
-            child: Container(),
+            child: ReusableCard(
+              color: kContainerColor,
+            ),
           ),
           Expanded(
             child: Row(
-
               children: <Widget>[
-                Container(),
-                Container(),
+                Expanded(
+                  child: ReusableCard(
+                    color: kContainerColor,
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    color: kContainerColor,
+                  ),
+                ),
               ],
             ),
           ),
+          CalculateButton(buttonName: 'CALCULATE',),
         ],
       ),
     );
   }
 }
 
+class CalculateButton extends StatelessWidget {
+  CalculateButton({this.buttonName});
 
+  final String? buttonName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kButtonColor,
+      child: Center(
+        child: Text(
+          buttonName.toString(),
+          style: kButtonTextStyle,
+        ),
+      ),
+      margin: EdgeInsets.only(top: 10.0),
+      padding: EdgeInsets.only(bottom: 20.0),
+      width: double.infinity,
+      height: kButtonHeight,
+    );
+  }
+}
