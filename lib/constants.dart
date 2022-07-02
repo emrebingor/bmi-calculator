@@ -5,3 +5,4 @@ const kContainerColor = Color(0xFF1e1f32);
 const kButtonColor = Color(0xFFEB1555);
 const kButtonTextStyle = TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold);
 const kButtonHeight = 80.0;
+const kNumberStyle = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
