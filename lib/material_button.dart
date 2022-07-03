@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RowMaterialButton extends StatelessWidget {
-  RowMaterialButton({required this.onPressed, required this.icon});
+  const RowMaterialButton({required this.onPressed, required this.icon});
 
   final Function() onPressed;
   final IconData? icon;
@@ -10,14 +10,14 @@ class RowMaterialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       onPressed: onPressed,
-      child: Icon(icon),
       elevation: 0.0,
-      constraints: BoxConstraints.tightFor(
+      constraints: const BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      child: Icon(icon),
     );
   }
 }

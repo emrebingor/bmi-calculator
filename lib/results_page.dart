@@ -5,22 +5,28 @@ import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
 
+  ResultsPage({required this.bmiResult, required this.resultText, required this.interpretation});
+
+  String bmiResult;
+  String resultText;
+  String interpretation;
+
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             alignment: Alignment.bottomLeft,
-            child: Text(
+            child: const Text(
               'Your Result',
               style: kYourResultText,
             ),
@@ -32,12 +38,12 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('Normal', style: kResultTextStyle),
+                  Text(resultText, style: kResultTextStyle),
                   Text(
-                    '19',
+                    bmiResult,
                     style: kResultNumber,
                   ),
-                  Text('Comment', style: kResultCommentText),
+                  Text(interpretation, style: kResultCommentText),
                 ],
               ),
               color: kContainerColor,

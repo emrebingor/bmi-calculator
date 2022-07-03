@@ -6,6 +6,7 @@ import 'package:bmi_calculator_flutter_app/results_page.dart';
 import 'package:bmi_calculator_flutter_app/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'calculator_brain.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'BMI CALCULATOR',
           style: TextStyle(color: Colors.white),
         ),
@@ -58,7 +59,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'HEIGHT',
                     style: kTextStyle,
                   ),
@@ -71,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                         '$height',
                         style: kNumberStyle,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kTextStyle,
                       ),
@@ -79,14 +80,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Color(0xFF8D8E98),
+                        inactiveTrackColor: const Color(0xFF8D8E98),
                         activeTrackColor: Colors.white,
-                        thumbColor: Color(0xFFEB1555),
-                        overlayColor: Color(0x29EB1555),
+                        thumbColor: const Color(0xFFEB1555),
+                        overlayColor: const Color(0x29EB1555),
                         thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                            const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                            const RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                       value: height.toDouble(),
                       min: 120.0,
@@ -111,7 +112,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'WEIGHT',
                           style: kTextStyle,
                         ),
@@ -126,7 +127,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 },
                                 icon: FontAwesomeIcons.minus),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RowMaterialButton(
@@ -148,7 +149,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'AGE',
                           style: kTextStyle,
                         ),
@@ -166,7 +167,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 },
                                 icon: FontAwesomeIcons.minus),
-                            SizedBox(width: 10.0),
+                            const SizedBox(width: 10.0),
                             RowMaterialButton(
                                 onPressed: () {
                                   setState(() {
@@ -186,10 +187,17 @@ class _InputPageState extends State<InputPage> {
           ),
           CalculateButton(
             onTap: () {
+
+              CalculatorBrain calculator = CalculatorBrain(height: height, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
+                  builder: (context) => ResultsPage(
+                    bmiResult: calculator.calculateBMI().toString(),
+                    resultText: calculator.getResult(),
+                    interpretation: calculator.getResultComment(),
+                  ),
                 ),
               );
             },
