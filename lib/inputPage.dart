@@ -8,12 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'calculator_brain.dart';
 
+enum Gender {
+  male,
+  female,
+}
+
 class InputPage extends StatefulWidget {
   @override
   State<InputPage> createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Gender? selectedGender;
   int weight = 50;
   int age = 18;
   int height = 180;
@@ -35,20 +42,30 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
+                    onPress: (){
+                      setState((){
+                        selectedGender = Gender.male;
+                      });
+                    },
                     cardChild: IconDesign(
                       icon: FontAwesomeIcons.mars,
                       gender: 'MALE',
                     ),
-                    color: kContainerColor,
+                    color: selectedGender == Gender.male ? kContainerColor : kInactiveContainer,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
+                    onPress: (){
+                      setState((){
+                        selectedGender = Gender.female;
+                      });
+                    },
                     cardChild: IconDesign(
                       icon: FontAwesomeIcons.venus,
                       gender: 'FEMALE',
                     ),
-                    color: kContainerColor,
+                    color: selectedGender == Gender.female ? kContainerColor : kInactiveContainer,
                   ),
                 ),
               ],
