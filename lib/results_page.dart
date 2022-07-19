@@ -43,7 +43,7 @@ class ResultsPage extends StatelessWidget {
                     bmiResult,
                     style: kResultNumber,
                   ),
-                  Text(interpretation, style: kResultCommentText),
+                  Text(interpretation, style: kResultCommentText, textAlign: TextAlign.center,),
                 ],
               ),
               color: kContainerColor,

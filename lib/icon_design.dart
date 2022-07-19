@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class IconDesign extends StatelessWidget {
 
-  IconDesign({this.gender, this.icon});
+  const IconDesign({this.gender, this.icon});
 
   final String? gender;
   final IconData? icon;
